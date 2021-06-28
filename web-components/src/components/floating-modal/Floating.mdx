@@ -1,4 +1,4 @@
-import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Props } from '@storybook/addon-docs';
 import {FloatingModal} from "./FloatingModal.ts"
 
 # Floating Modal
@@ -18,15 +18,15 @@ The wrapping container of the modal can be reached via CSS by using the `::part(
 md-floating-modal::part(floating) {
     min-height: 400px;
     min-width: 600px
-} 
+}
 ```
 
 ### Slots
 #### Unnamed Slots
 The Unnamed `<slot>` will render any content you pass between the `<md-floating-modal></md-floating-modal>` tags.
 ```html
-<md-floating-modal> 
-    <div>My modal's content!</div> 
+<md-floating-modal>
+    <div>My modal's content!</div>
 </md-floating-modal>
 ```
 

@@ -1,5 +1,5 @@
-import { commonDev } from '../webpack.config';
 import * as webpack from "webpack";
+import { commonDev } from '../webpack.config';
 
 /**
  * merge two arrays into one and remove the duplicates
@@ -26,7 +26,7 @@ module.exports = {
     "@storybook/addon-a11y/register",
     "@storybook/addon-docs",
     "@storybook/addon-controls",
-    "@storybook/addon-actions",
+    "@storybook/addon-actions/register",
     "@storybook/addon-viewport"
   ],
 
