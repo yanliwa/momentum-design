@@ -8,8 +8,8 @@
 
 import "@/components/badge/Badge";
 import "@/components/icon/Icon";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
@@ -20,15 +20,17 @@ export namespace TaskItem {
   export class ELEMENT extends LitElement {
     @property({ type: String }) mediaType = "call";
     @property({ type: String }) status = "";
+    @property({ type: String }) popovertitle = "";
     @property({ type: String }) title = "";
     @property({ type: String }) queue = "";
     @property({ type: Boolean }) accepted = false;
     @property({ type: Number }) quantity = 0;
     @property({ type: String }) lastmessage = "";
     @property({ type: Boolean }) selected = false;
+    @property({ type: String }) customAriaLabel = "";
 
     renderTaskType = () => {
-      switch (this.mediaType) {
+      switch (this.mediaType.toLowerCase()) {
         case "telephony":
           return html`
             <md-badge color="green" circle>
@@ -45,6 +47,12 @@ export namespace TaskItem {
           return html`
             <md-badge color="green" circle>
               <md-icon name="incoming-call-active_16"></md-icon>
+            </md-badge>
+          `;
+        case "callback":
+          return html`
+            <md-badge color="lime" circle>
+              <md-icon name="icon-icon-callback_16"></md-icon>
             </md-badge>
           `;
         case "chat":
@@ -71,7 +79,7 @@ export namespace TaskItem {
               <md-icon name="messenger_16" color="white"></md-icon>
             </md-badge>
           `;
-        case "whatsApp":
+        case "whatsapp":
           return html`
             <md-badge bgColor="#25D366" circle>
               <md-icon name="whatsApp_16" color="white"></md-icon>
@@ -152,12 +160,21 @@ export namespace TaskItem {
       return this.quantity > 0
         ? this.quantity > 99
           ? html`
-              <span aria-label=${this.quantity} class="new-chat-quantity">99+</span>
+              <span class="new-chat-quantity">99+</span>
             `
           : html`
-              <span aria-label=${this.quantity} class="new-chat-quantity">${this.quantity}</span>
+              <span class="new-chat-quantity">${this.quantity}</span>
             `
         : nothing;
+    }
+
+    getAriaLabel() {
+      if (this.customAriaLabel) {
+        return this.customAriaLabel;
+      }
+      return `${this.mediaType} ${this.status} ${this.title} ${this.queue} ${this.quantity ? this.quantity : ""} ${
+        this.lastmessage
+      }`;
     }
 
     static get styles() {
@@ -173,21 +190,33 @@ export namespace TaskItem {
           aria-selected="${this.selected}"
           @click=${(e: MouseEvent) => this.handleClick(e)}
           @keydown=${(e: KeyboardEvent) => this.handleKeyDown(e)}
+          aria-label=${this.getAriaLabel()}
         >
           <div class="md-taskitem__mediatype">
             ${this.renderTaskType()}
             ${this.status
               ? html`
-                  <span aria-label=${this.status} class=${`md-taskitem__status ` + `${this.status}`}>
+                  <span class=${`md-taskitem__status ` + `${this.status}`}>
                     ${this.renderStatus()}
                   </span>
                 `
               : nothing}
           </div>
           <div class="md-taskitem__content" part="task-item-content">
-            <span aria-label=${this.title} class="md-taskitem__content_title">${this.title}</span>
+            ${this.popovertitle
+              ? html`
+                  <span class="md-taskitem__content_popover_title">${this.popovertitle}</span>
+                `
+              : nothing}
+            ${this.title
+              ? html`
+                  <span class="md-taskitem__content_title ${classMap({ mainTitle: !this.popovertitle })}"
+                    >${this.title}</span
+                  >
+                `
+              : nothing}
             <div class="md-taskitem__content_inner">
-              <span aria-label=${this.queue} class="md-taskitem__content_queue">
+              <span class="md-taskitem__content_queue">
                 ${this.queue.length > 0
                   ? this.queue
                   : html`

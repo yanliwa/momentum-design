@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.10.0...@momentum-ui/icons-rebrand@1.11.0) (2021-09-21)
+
+
+### Features
+
+* **icon:** add new icons ([#1063](https://github.com/momentum-design/momentum-ui/issues/1063)) ([5d963b3](https://github.com/momentum-design/momentum-ui/commit/5d963b3b720c4b15e98b9bddd65c4ff9813b1616))
+
+
+
+
+
+# [1.10.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.9.0...@momentum-ui/icons-rebrand@1.10.0) (2021-09-16)
+
+
+### Features
+
+* **icon:** add new icons ([dce5c16](https://github.com/momentum-design/momentum-ui/commit/dce5c16c686bc6967643095ee3992d33fb36e405))
+
+
+
+
+
+# [1.9.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.8.0...@momentum-ui/icons-rebrand@1.9.0) (2021-09-11)
+
+
+### Features
+
+* **icon:** add new icons ([#1058](https://github.com/momentum-design/momentum-ui/issues/1058)) ([f661fb8](https://github.com/momentum-design/momentum-ui/commit/f661fb84a8e92cf5e383c020e7dd3cd00f4b1e86))
+* **icon:** add new icons ([#1059](https://github.com/momentum-design/momentum-ui/issues/1059)) ([368d323](https://github.com/momentum-design/momentum-ui/commit/368d323cc8f1c477ed298aafe22e6b87a3881c58))
+
+
+
+
+
+# [1.8.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.7.0...@momentum-ui/icons-rebrand@1.8.0) (2021-09-04)
+
+
+### Features
+
+* **icon:** add new icons ([#1053](https://github.com/momentum-design/momentum-ui/issues/1053)) ([fbdda34](https://github.com/momentum-design/momentum-ui/commit/fbdda3416180271db1312881d134633d883af78a))
+
+
+
+
+
+# [1.7.0](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.6.1...@momentum-ui/icons-rebrand@1.7.0) (2021-09-01)
+
+
+### Features
+
+* **icon:** add new icons ([#1038](https://github.com/momentum-design/momentum-ui/issues/1038)) ([2056e69](https://github.com/momentum-design/momentum-ui/commit/2056e6949554915e4372e2c88b91bb434199ae1b))
+* **icon:** add new icons ([#1045](https://github.com/momentum-design/momentum-ui/issues/1045)) ([6c9c9c7](https://github.com/momentum-design/momentum-ui/commit/6c9c9c731039f3de4c063089bf44bf834bdc2d01))
+
+
+
+
+
 ## [1.6.1](https://github.com/momentum-design/momentum-ui/compare/@momentum-ui/icons-rebrand@1.6.0...@momentum-ui/icons-rebrand@1.6.1) (2021-08-06)
 
 **Note:** Version bump only for package @momentum-ui/icons-rebrand
