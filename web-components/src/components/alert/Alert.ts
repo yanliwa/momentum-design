@@ -6,25 +6,72 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
+import "@/components/button/Button";
+import "@/components/icon/Icon";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, TemplateResult } from "lit-element";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
-import "@/components/button/Button";
-import "@/components/icon/Icon";
 import styles from "./scss/module.scss";
+
+/**
+ * Momentum alert component.
+ *
+ * @element md-alert
+ * @slot alert-icon
+ * @slot alert-body
+ * @slot icon
+ * @slot alert-footer
+ *
+ * @part alert
+ * @part content
+ *
+ * @fires alert-close
+ */
 
 export namespace Alert {
   @customElementWithCheck("md-alert")
   export class ELEMENT extends LitElement {
+    /**
+     * Set whether the alert can be closed
+     * @attr closable
+     */
     @property({ type: Boolean }) closable = false;
+    /**
+     * Set the message text
+     * @attr message
+     */
     @property({ type: String }) message = "";
+    /**
+     * Set whether the alert is visible
+     * @attr show
+     */
     @property({ type: Boolean }) show = false;
+    /**
+     * Alert by default closes internally, otherwise controlled externally by `show`
+     * @attr internalClose
+     */
     @property({ type: Boolean }) internalClose = true;
+    /**
+     * Set alert component's title, passes though to text or button title
+     * @attr title
+     */
     @property({ type: String }) title = "";
+    /**
+     * Aria Label to pass though to close button
+     * @attr btnlabel
+     */
     @property({ type: String }) btnlabel = "Close";
+    /**
+     * Type of alert for style: `error`, `info`, `success`, `warn`, `warning`
+     * @attr type
+     */
     @property({ type: String }) type = "default";
+    /**
+     * Set inline display style
+     * @attr inline
+     */
     @property({ type: Boolean }) inline = false;
 
     close() {
@@ -35,7 +82,6 @@ export namespace Alert {
         })
       );
 
-      // By default closing internally, othervise - controlling outer via .show
       if (this.internalClose) {
         this.show = false;
       }

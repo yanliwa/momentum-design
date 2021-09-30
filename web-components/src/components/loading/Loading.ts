@@ -15,7 +15,7 @@ import styles from "./scss/module.scss";
 /**
  * Momentum loading component.
  *
- * @tag md-loading
+ * @element md-loading
  *
  */
 
