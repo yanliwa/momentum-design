@@ -12,11 +12,23 @@ import { html, LitElement, property } from "lit-element";
 import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
 
+/**
+ * Momentum loading component.
+ *
+ * @tag md-loading
+ *
+ */
+
 export namespace Loading {
   export type LoadingSize = "small" | "middle" | "large" | "";
 
   @customElementWithCheck("md-loading")
   export class ELEMENT extends LitElement {
+    /**
+     * The size of the loading dots
+     * @attr size
+     * @type LoadingSize
+     */
     @property({ type: String }) size: LoadingSize = "";
 
     static get styles() {
