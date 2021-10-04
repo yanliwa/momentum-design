@@ -18,6 +18,15 @@ import { styleMap } from "lit-html/directives/style-map";
 import { until } from "lit-html/directives/until.js";
 import styles from "./scss/module.scss";
 
+/**
+ * Momentum avatar component.
+ *
+ * @element md-avatar
+ *
+ * @part avatar
+ *
+ */
+
 export const AvatarType = [
   "active",
   "bot",
@@ -41,18 +50,68 @@ export namespace Avatar {
 
   @customElementWithCheck("md-avatar")
   export class ELEMENT extends LitElement {
+    /**
+     * Set alt text for the avatar image
+     * @attr alt
+     */
     @property({ type: String }) alt = "";
+    /**
+     * Set the image src for avatar
+     * @attr src
+     */
     @property({ type: String }) src = "";
+    /**
+     * Set Aria Label on avatar
+     * @attr label
+     */
     @property({ type: String }) label = "";
+    /**
+     * Set text for avatar title, which will render in initial format is image is missing
+     * @attr title
+     */
     @property({ type: String }) title = "";
+    /**
+     * Set Avatar color
+     * @attr color
+     */
     @property({ type: String }) color = "";
+    /**
+     * Toggles 'decrypting' style (i.e. loading)
+     * @attr decrypting
+     */
     @property({ type: Boolean }) decrypting = false;
+    /**
+     * Set the Momentum format Icon that should show in the avatar
+     * @attr icon-name
+     */
     @property({ type: String, attribute: "icon-name" }) iconName = "";
+    /**
+     * Set the Type of the avatar
+     * @attr type
+     * @type Type
+     */
     @property({ type: String }) type: Type = "";
+    /**
+     * Set Avatar size
+     * @attr size
+     * @type Size
+     */
     @property({ type: Number }) size: Size = 40;
+    /**
+     * Toggle notification indicator style
+     * @attr has-notification
+     */
     @property({ type: Boolean, attribute: "has-notification" }) hasNotification = false;
 
+    /**
+     * Internal state toggle for successful loaded image
+     * @prop imageLoaded
+     */
     @internalProperty() private imageLoaded = false;
+    /**
+     * Internal state toggle for error on image load
+     * @prop imageErrored
+     */
     @internalProperty() private imageErrored = false;
 
     static get styles() {
