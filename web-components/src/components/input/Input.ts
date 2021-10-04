@@ -6,22 +6,40 @@
  *
  */
 
-import { Key, ARIA_INVALID } from "@/constants";
-import { FocusMixin } from "@/mixins/FocusMixin";
-import reset from "@/wc_scss/reset.scss";
-import iconNamesList from "@momentum-ui/icons/data/iconNames.json";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { html, internalProperty, LitElement, property, query } from "lit-element";
-import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
-import { repeat } from "lit-html/directives/repeat";
-import { styleMap } from "lit-html/directives/style-map";
 import "@/components/help-text/HelpText";
 import "@/components/icon/Icon";
 import "@/components/label/Label";
 import "@/components/spinner/Spinner";
-import styles from "./scss/module.scss";
+import { ARIA_INVALID, Key } from "@/constants";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import { FocusMixin } from "@/mixins/FocusMixin";
+import reset from "@/wc_scss/reset.scss";
+import iconNamesList from "@momentum-ui/icons/data/iconNames.json";
+import { html, internalProperty, LitElement, property, query } from "lit-element";
+import { nothing } from "lit-html";
+import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
+import { repeat } from "lit-html/directives/repeat";
+import { styleMap } from "lit-html/directives/style-map";
+import styles from "./scss/module.scss";
+
+/**
+ * Momentum input component.
+ *
+ * @element md-input
+
+ * @slot input-section
+ * @slot input-section-right
+ *
+ * @part input
+ * @part message
+ *
+ * @fires input-keydown
+ * @fires input-focus
+ * @fires input-mousedown
+ * @fires input-change
+ * @fires input-blur
+ */
 
 export const containerSize = [
   "small-1",
@@ -138,44 +156,179 @@ export namespace Input {
 
   @customElementWithCheck("md-input")
   export class ELEMENT extends FocusMixin(LitElement) {
+    /**
+     * @attr ariaDescribedBy
+     */
     @property({ type: String }) ariaDescribedBy = "";
+    /**
+     * @attr ariaInvalid
+     */
     @property({ type: String }) ariaInvalid: Input.AriaInvalidType = "false";
+    /**
+     * @attr ariaLabel
+     */
     @property({ type: String }) ariaLabel = "input";
+    /**
+     * Set input field to receive focus automatically
+     * @attr autofocus
+     */
     @property({ type: Boolean, reflect: true }) autofocus = false;
+    /**
+     * Set placement of aux input items, to `before` or `after` input text
+     * @attr auxiliaryContentPosition
+     */
     @property({ type: String }) auxiliaryContentPosition: "before" | "after" | null = null;
+    /**
+     * Toggle visibility of a `clear` button to clean out a form
+     * @attr clear
+     */
     @property({ type: Boolean }) clear = false;
+    /**
+     * Set aria label text for clear button
+     * @attr clearAriaLabel
+     */
     @property({ type: String }) clearAriaLabel = "";
+    /**
+     * Set compact input style
+     * @attr compact
+     */
     @property({ type: Boolean }) compact = false;
+    /**
+     * Set size of input wrapper
+     * @attr containerSize
+     */
     @property({ type: String }) containerSize: Input.ContainerSize = "small-12";
+    /**
+     * Set disabled state style and functionality
+     * @attr disabled
+     */
     @property({ type: Boolean }) disabled = false;
+    /**
+     * @attr id
+     */
     @property({ type: String }) id = "";
+    /**
+     * Set input size to standard denomonation
+     * @attr inputSize
+     */
     @property({ type: String }) inputSize = "";
+    /**
+     * Set a 'filled' style render
+     * @attr isFilled
+     */
     @property({ type: Boolean }) isFilled = false;
+    /**
+     * Set loading state
+     * @attr isLoading
+     */
     @property({ type: Boolean }) isLoading = false;
+    /**
+     * @attr label
+     */
     @property({ type: String }) label = "";
+    /**
+     * Set help text
+     * @attr helpText
+     */
     @property({ type: String }) helpText = "";
+    /**
+     * Toggle visibility of error messages
+     * @attr hide-message
+     */
     @property({ type: Boolean, attribute: "hide-message", reflect: true }) hideMessage = false;
+    /**
+     * set pass-through ID for shadow element
+     * @attr htmlId
+     */
     @property({ type: String }) htmlId = "";
+    /**
+     * Set an array of custom error messages that render in the view
+     * @attr messageArr
+     */
     @property({ type: Array }) messageArr: Input.Message[] = [];
+    /**
+     * Set input min for number inputs
+     * @attr min
+     */
     @property({ type: Number, reflect: true }) min: number | undefined = undefined;
+    /**
+     * Set input max for number inputs
+     * @attr max
+     */
     @property({ type: Number, reflect: true }) max: number | undefined = undefined;
+    /**
+     * Set input max length for text inputs
+     * @attr maxLength
+     */
     @property({ type: Number }) maxLength: number | undefined = undefined;
+    /**
+     * @attr multi
+     */
     @property({ type: Boolean }) multi = false;
+    /**
+     * Set input to multiline (text-area)
+     * @attr multiline
+     */
     @property({ type: Boolean }) multiline = false;
+    /**
+     * @attr name
+     */
     @property({ type: String, reflect: true }) name = "";
+    /**
+     * Control level of indent for nested inputs
+     * @attr nestedLevel
+     */
     @property({ type: Number }) nestedLevel = 0;
+    /**
+     * Set placeholder text
+     * @attr placeholder
+     */
     @property({ type: String }) placeholder = "";
+    /**
+     * Set input as a read only field
+     * @attr readOnly
+     */
     @property({ type: Boolean }) readOnly = false;
+    /**
+     * Mark field as required
+     * @attr required
+     */
     @property({ type: Boolean }) required = false;
+    /**
+     * Toggle searchable input style
+     * @attr searchable
+     */
     @property({ type: Boolean }) searchable = false;
+    /**
+     * Set text for a secondary layer of label text
+     * @attr secondaryLabel
+     */
     @property({ type: String }) secondaryLabel = "";
+    /**
+     * Toggle select when in focus behavior
+     * @attr select-when-in-focus
+     */
     @property({ type: Boolean, attribute: "select-when-in-focus" }) selectWhenInFocus = false;
+    /**
+     * Set shape to default (rectangle) or 'pill' shape
+     * @attr shape
+     */
     @property({ type: String }) shape = "";
+    /**
+     * @attr type
+     */
     @property({ type: String }) type: Input.Type = "text";
+    /**
+     * @attr value
+     */
     @property({ type: String, reflect: true }) value = "";
 
     @query(".md-input") input!: HTMLInputElement;
 
+    /**
+     * Internal state to style when typing
+     * @prop isEditing
+     */
     @internalProperty() private isEditing = false;
 
     private readonly messageController = new MessageController();
