@@ -14,20 +14,78 @@ import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./scss/module.scss";
 
+/**
+ * Momentum badge component.
+ *
+ * @element md-badge
+ * @slot - default slot
+ * @slot split-left - when using `split` badge, slot for left content
+ * @slot split-right - when using `split` badge, slot for right content
+ *
+ * @part badge
+ *
+ */
 export namespace Badge {
   @customElementWithCheck("md-badge")
   export class ELEMENT extends LitElement {
+    /**
+     * @attr aria-label
+     */
     @property({ type: String, attribute: "aria-label" }) ariaLabel = "";
+    /**
+     * set to a predefined color value from the design system
+     * @attr color
+     */
     @property({ type: String }) color = "";
+    /**
+     * set the color to any CSS compliant value
+     * @attr bgColor
+     */
     @property({ type: String }) bgColor = "";
+    /**
+     * set the color to any CSS compliant value
+     * @attr textColor
+     */
     @property({ type: String }) textColor = "";
+    /**
+     * manually set the height to any CSS compliant value
+     * @attr height
+     */
     @property({ type: String }) height = "";
+    /**
+     * manually set the width to any CSS compliant value
+     * @attr width
+     */
     @property({ type: String }) width = "";
+    /**
+     * toggle outline style
+     * @attr outlined
+     */
     @property({ type: Boolean }) outlined = false;
+    /**
+     * toggle the compact style
+     * @attr compact
+     */
     @property({ type: Boolean }) compact = false;
+    /**
+     * toggle circle style
+     * @attr circle
+     */
     @property({ type: Boolean }) circle = false;
+    /**
+     * toggles small style
+     * @attr small
+     */
     @property({ type: Boolean }) small = false;
+    /**
+     * toggle a split badge style
+     * @attr split
+     */
     @property({ type: Boolean }) split = false;
+    /**
+     * toggle disabled style
+     * @attr disabled
+     */
     @property({ type: Boolean }) disabled = false;
 
     renderBgColor = () => {
