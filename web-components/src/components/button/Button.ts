@@ -18,6 +18,23 @@ import { classMap } from "lit-html/directives/class-map";
 import { ifDefined } from "lit-html/directives/if-defined";
 import styles from "./scss/module.scss";
 
+/**
+ * Momentum button component.
+ *
+ * @element md-button
+ * @slot - default slot
+ * @slot icon - for Icon content
+ * @slot text - for text content
+ *
+ * @part button
+ * @part button-container
+ * @part button-children
+ * @part button-label
+ *
+ * @fires button-keydown
+ * @fires button-click
+ */
+
 export const buttonSize = [
   "20",
   "28",
@@ -129,32 +146,140 @@ export namespace Button {
       this.requestUpdate("tabIndex", oldValue);
     }
 
+    /**
+     * accessibility text that labels the button when text label is not visible on screen
+     * @attr ariaLabel
+     */
     @property({ type: String }) ariaLabel = "";
+    /**
+     * accessibility text that labels the button when there is visible text on screen
+     * @attr ariaLabelledBy
+     */
     @property({ type: String }) ariaLabelledBy = "";
+    /**
+     * accessibility text to convey that the button's visibility can be toggled - **Inaccurate usage
+     * @attr ariaExpanded
+     */
     @property({ type: Boolean }) ariaExpanded = false;
+    /**
+     * accessibility text that indicates availability/type of interactive popup element that the button can trigger.
+     * @attr ariaHaspopup
+     */
     @property({ type: Boolean }) ariaHaspopup = false;
+    /**
+     * accessibility text that describes the state of the button - **Inaccurate usage
+     * @attr ariaPressed
+     */
     @property({ type: Boolean }) ariaPressed = false;
+    /**
+     * value to set the button shape as a circle
+     * @attr circle
+     */
     @property({ type: Boolean }) circle = false;
+    /**
+     * sets the background color of the button
+     * @attr color
+     */
     @property({ type: String }) color: Button.color = "";
+    /**
+     * sets the button container to a larger size, usually if you are including a button label
+     * @attr containerLarge
+     */
     @property({ type: Boolean }) containerLarge = false;
+    /**
+     * disabled the button visually and functionally
+     * @attr disabled
+     */
     @property({ type: Boolean }) disabled = false;
+    /**
+     * adds hyperlink to button when the button property tag is set to anchor (`a`)
+     * @attr href
+     */
     @property({ type: String }) href = "";
+    /**
+     * sets the id property of the html button
+     * @attr id
+     */
     @property({ type: String }) id = "";
+    /**
+     * sets the value html property to the button when the button property tag is set to input
+     * @attr value
+     */
     @property({ type: String }) value = "";
+    /**
+     * renders text positioned below the button within container
+     * @attr keyboardKey
+     */
     @property({ type: String }) keyboardKey = "";
+    /**
+     * renders text positioned below the button within container
+     * @attr label
+     */
     @property({ type: String }) label = "";
+    /**
+     * displays a loading spinner within button
+     * @attr loading
+     */
     @property({ type: Boolean }) loading = false;
+    /**
+     * visually changes the button to have an outline correlating with the color property
+     * @attr outline
+     */
     @property({ type: Boolean }) outline = false;
+    /**
+     * removes all default styling to the button
+     * @attr hasRemoveStyle
+     */
     @property({ type: Boolean }) hasRemoveStyle = false;
+    /**
+     * sets the size of the button
+     * @attr size
+     */
     @property({ type: String }) size: Button.Size = "32";
+    /**
+     * determines the button's html tag (button, input, a)
+     * @attr tag
+     */
     @property({ type: String }) tag: Button.Tag = "button";
+    /**
+     * sets the type property of the html button (button, reset, submit)
+     * @attr type
+     */
     @property({ type: String }) type: Button.Type = "button";
+    /**
+     * sets the role property of the html button
+     * @attr role
+     */
     @property({ type: String }) role: Button.Role = "button";
+    /**
+     * sets the Lumos color variant of the button's background
+     * @attr variant
+     */
     @property({ type: String }) variant: Button.variant = "secondary";
+    /**
+     * Set a width override
+     * @attr width
+     */
     @property({ type: String }) width = "";
+    /**
+     * Set a max width
+     * @attr maxWidth
+     */
     @property({ type: String }) maxWidth = "";
+    /**
+     * sets the activity type for md-activity-button (pre defined icon styles)
+     * @attr activityType
+     */
     @property({ type: String }) activityType = "";
+    /**
+     * sets the button visual for icon
+     * @attr iconActive
+     */
     @property({ type: Boolean }) iconActive = false;
+    /**
+     * set the function for the button's onClick
+     * @attr clickFunction
+     */
     @property({ attribute: false }) clickFunction: Function | null = null;
 
     @query(".md-button") button!: HTMLButtonElement;
