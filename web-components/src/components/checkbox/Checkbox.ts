@@ -8,16 +8,33 @@
 
 import { Key } from "@/constants";
 import { FocusMixin } from "@/mixins";
-import reset from "@/wc_scss/reset.scss";
 import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
 import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import styles from "./scss/module.scss";
+
+/**
+ * Momentum checkbox component.
+ *
+ * @element md-checkbox
+ * @slot - default slot
+ *
+ *@fires checkbox-change
+ */
 
 export namespace Checkbox {
   @customElementWithCheck("md-checkbox")
   export class ELEMENT extends FocusMixin(LitElement) {
+    /**
+     * Set checkbox to automatically have the focus
+     * @attr autofocus
+     */
     @property({ type: Boolean, reflect: true }) autofocus = false;
     private _checked = false;
+    /**
+     * Set checked state
+     * @attr checked
+     */
     @property({ type: Boolean, reflect: true })
     get checked() {
       return this._checked;
@@ -30,7 +47,10 @@ export namespace Checkbox {
       }
       this.requestUpdate("checked", oldValue);
     }
-
+    /**
+     * Set indeterminate state
+     * @prop indeterminate
+     */
     private _indeterminate = false;
     @property({ type: Boolean, reflect: true })
     get indeterminate() {
@@ -43,6 +63,10 @@ export namespace Checkbox {
       this.requestUpdate("indeterminate", oldValue);
     }
 
+    /**
+     * Set disabled state
+     * @attr disabled
+     */
     private _disabled = false;
     @property({ type: Boolean, reflect: true })
     get disabled() {
@@ -60,7 +84,13 @@ export namespace Checkbox {
       this.requestUpdate("disabled", oldValue);
     }
 
+    /**
+     * @attr label
+     */
     @property({ type: String }) label = "";
+    /**
+     * @attr tabIndex
+     */
     @property({ type: Number, reflect: true }) tabIndex = 0;
 
     @query(".checkbox-input") input!: HTMLInputElement;
@@ -163,8 +193,6 @@ export namespace Checkbox {
     }
   }
 }
-
-
 
 declare global {
   interface HTMLElementTagNameMap {
