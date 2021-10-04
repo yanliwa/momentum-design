@@ -6,12 +6,19 @@
  *
  */
 
-import reset from "@/wc_scss/reset.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { CSSResultArray, html, LitElement, property } from "lit-element";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
+import { CSSResultArray, html, LitElement, property } from "lit-element";
 import styles from "./scss/module.scss";
+
+/**
+ * Momentum activity-button component.
+ *
+ * @element md-activity-button
+ *
+ */
 
 export const activityButtonSize = ["56", "68", "84", 56, 68, 84] as const;
 export const activityButtonType = [
@@ -31,9 +38,25 @@ export namespace ActivityButton {
 
   @customElementWithCheck("md-activity-button")
   export class ELEMENT extends LitElement {
+    /**
+     * Set aria-label text
+     * @attr ariaLabel
+     */
     @property({ type: String }) ariaLabel = "";
+    /**
+     * Toggle disabled state
+     * @attr disabled
+     */
     @property({ type: Boolean }) disabled = false;
+    /**
+     * Set label text
+     * @attr label
+     */
     @property({ type: String }) label = "";
+    /**
+     * Set button size
+     * @attr size
+     */
     @property({ type: String }) size: ActivityButton.Size = "68";
 
     _type: ActivityButton.Type = "chat";
