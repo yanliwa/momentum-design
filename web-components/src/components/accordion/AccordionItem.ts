@@ -13,6 +13,20 @@ import { ifDefined } from "lit-html/directives/if-defined";
 import { nanoid } from "nanoid";
 import styles from "./scss/module.scss";
 
+/**
+ * Momentum accordion-item component.
+ *
+ * @element md-accordion-item
+ *
+ * @slot - default slot content, for any HTML content
+ * @slot header-content
+ *
+ * @part accordion-header
+ * @part accordion-button
+ * @part accordion-panel
+ *
+ */
+
 export namespace AccordionItem {
   export type AccordionEvent = {
     srcEvent: MouseEvent | KeyboardEvent;
@@ -25,8 +39,20 @@ export namespace AccordionItem {
 
     private uniqueId = nanoid();
 
+    /**
+     * Set label text
+     * @attr label
+     */
     @property({ type: String }) label = "";
+    /**
+     * Toggle disabled state
+     * @attr disabled
+     */
     @property({ type: Boolean, reflect: true }) disabled = false;
+    /**
+     * Shows & controls the expanded state of an accordion item
+     * @prop expanded
+     */
     @property({ type: Boolean, reflect: true })
     get expanded() {
       return this._expanded;
@@ -46,6 +72,10 @@ export namespace AccordionItem {
     get level() {
       return this._level;
     }
+    /**
+     * Tracks the level for use in `aria-level`
+     * @prop level
+     */
     set level(value: number) {
       const oldValue = this.level;
       if (value < 1 || value > 6) {

@@ -13,9 +13,23 @@ import { html, LitElement, property, PropertyValues, query } from "lit-element";
 import { AccordionItem } from "./AccordionItem";
 import styles from "./scss/module.scss";
 
+/**
+ * Momentum accordion component.
+ *
+ * @element md-accordion
+ *
+ * @slot accordion-item
+ *
+ * @part accordion
+ *
+ */
+
 export namespace Accordion {
   @customElementWithCheck("md-accordion")
   export class ELEMENT extends SlottedMixin(LitElement) {
+    /**
+     * Toggle multi display, which will allow more than one accordion section to be open at a time
+     */
     @property({ type: Boolean, reflect: true }) multiple = false;
 
     @query('slot[name="accordion-item"]') accordionItemSlotElement!: HTMLSlotElement;
