@@ -4,24 +4,53 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
-*/
+ */
 
-import { Key } from "@/constants";
-import reset from "@/wc_scss/reset.scss";
-import { customElementWithCheck } from "@/mixins/CustomElementCheck";
-import { CSSResultArray, html, LitElement, property } from "lit-element";
-import { classMap } from "lit-html/directives/class-map.js";
 import "@/components/button/Button";
 import "@/components/icon/Icon";
+import { Key } from "@/constants";
+import { customElementWithCheck } from "@/mixins/CustomElementCheck";
+import reset from "@/wc_scss/reset.scss";
+import { CSSResultArray, html, LitElement, property } from "lit-element";
+import { classMap } from "lit-html/directives/class-map.js";
 import styles from "./scss/module.scss";
+
+/**
+ * Momentum alert-banner component.
+ *
+ * @element md-alert-banner
+ *
+ * @slot - default slot content
+ *
+ */
 
 export namespace AlertBanner {
   @customElementWithCheck("md-alert-banner")
   export class ELEMENT extends LitElement {
+    /**
+     * Set alert type, `default`, `warning`, `error`
+     * @attr type
+     */
     @property({ type: String }) type = "";
+    /**
+     * Set the message text that shows in the alert
+     * @attr message
+     */
     @property({ type: String }) message = "";
+    /**
+     * Toggle whether the alert can be closed or persist
+     * @attr closable
+     */
     @property({ type: Boolean }) closable = false;
+    /**
+     * Toggle visibility of alert banner
+     * @attr show
+     */
     @property({ type: Boolean }) show = false;
+    /**
+     * Set the aria text for the close button
+     * @attr close-aria-label
+     */
     @property({ type: String, attribute: "close-aria-label" }) closeAriaLabel = "Close Banner";
 
     connectedCallback() {
